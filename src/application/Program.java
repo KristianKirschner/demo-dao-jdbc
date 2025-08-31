@@ -1,6 +1,9 @@
 package application;
 
+import java.util.Date;
+
 import model.entities.Department;
+import model.entities.Seller;
 
 public class Program {
 
@@ -9,6 +12,10 @@ public class Program {
 		Department obj = new Department(1, "Marketing");
 		
 		System.out.println(obj);
+		
+		Seller s = new Seller(1, "a", "a", new Date(), 3200.0, obj);
+		
+		System.out.println(s);
 		
 //		Connection conn = null;
 
