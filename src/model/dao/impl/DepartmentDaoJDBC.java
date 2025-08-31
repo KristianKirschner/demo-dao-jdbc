@@ -51,9 +51,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 			rs = st.executeQuery();
 			
 			if (rs.next()) {
-				Department dep = new Department();
-				dep.setId(rs.getInt("Id"));
-				dep.setName(rs.getString("Name"));
+				Department dep = instantiateDepartment(rs);
 				
 
 				
@@ -69,6 +67,15 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 			DB.closeResultSet(rs);
 		}
 		
+	}
+	
+
+	private Department instantiateDepartment(ResultSet rs) throws SQLException {
+		Department dep = new Department();
+		dep.setId(rs.getInt("Id"));
+		dep.setName(rs.getString("Name"));
+		
+		return dep;
 	}
 
 	@Override
