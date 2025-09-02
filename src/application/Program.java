@@ -1,5 +1,6 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.dao.DaoFactory;
@@ -13,21 +14,32 @@ public class Program {
 	public static void main(String[] args) {
 		
 		SellerDao sellerDao = DaoFactory.createSellerDao();
-//		
-//		Seller seller = sellerDao.findById(3);
-//		
-//		System.out.println(seller);
-//		
-//		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
-//		
-//		Department department = departmentDao.findById(2);
-//		
-//		System.out.println(department);
-//		
-		System.out.println("Find by Department test");
-		Department department2 = new Department(2, null);
-		List<Seller> vendedores = sellerDao.findByDepartment(department2);
 		
+		System.out.println("#### findById seller teste");
+		Seller seller = sellerDao.findById(3);
+		
+		System.out.println(seller);
+		
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		
+		System.out.println("#### findById department teste");
+		Department department = departmentDao.findById(2);
+		System.out.println(department);		
+		
+		
+		
+		List<Seller> vendedores = new ArrayList<>();
+		
+		System.out.println("####findByDepartment test");
+		Department department2 = new Department(2, null);
+		vendedores = sellerDao.findByDepartment(department2);
+		for (Seller sel : vendedores) {
+			System.out.println(sel);
+		}
+		
+		System.out.println("#### FindAll test");
+		
+		vendedores = sellerDao.findAll();
 		for (Seller sel : vendedores) {
 			System.out.println(sel);
 		}
